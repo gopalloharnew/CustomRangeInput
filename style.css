@@ -1,0 +1,10 @@
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: hsl(222, 11%, 11%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px;
+}

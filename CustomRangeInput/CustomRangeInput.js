@@ -45,7 +45,6 @@ function createDivOfClass(className) {
 
 function eventListenersForInput() {
   this.rangeTrackRect = this.rangeTrack.getBoundingClientRect();
-  // let this = this;
   function rangeAction(e) {
     if (e.x < this.rangeTrackRect.x) {
       this.rangeProgress = 0;
@@ -92,10 +91,33 @@ function eventListenersForInput() {
     this.isMouseDown = false;
   };
 
-  this.rangeWraper.addEventListener("click", rangeClick);
-  this.rangeWraper.addEventListener("mousedown", rangeMouseDown);
-  document.addEventListener("mousemove", rangeMouseMove);
-  document.addEventListener("mouseup", rangeMouseUp);
+  // this.rangeWraper.addEventListener("click", rangeClick);
+  // this.rangeWraper.addEventListener("mousedown", rangeMouseDown);
+  // document.addEventListener("mousemove", rangeMouseMove);
+  // document.addEventListener("mouseup", rangeMouseUp);
+
+  const rangeTouchStart = (e) => {
+    this.isTouchDown = true;
+    rangeAction.call(this, { x: e.changedTouches[0].clientX });
+  };
+
+  const rangeTouchMove = (e) => {
+    if (this.isTouchDown) {
+      rangeAction.call(this, { x: e.changedTouches[0].clientX });
+    }
+  };
+
+  const rangeTouchEnd = (e) => {
+    if (this.isTouchDown) {
+      this.isTouchDown = false;
+    }
+  };
+
+  this.rangeWraper.addEventListener("touchstart", rangeTouchStart);
+  document.addEventListener("touchmove", rangeTouchMove);
+  document.addEventListener("touchend", rangeTouchEnd);
+  document.addEventListener("touchcancel", rangeTouchEnd);
+
   window.addEventListener("resize", () => {
     this.rangeTrackRect = this.rangeTrack.getBoundingClientRect();
   });

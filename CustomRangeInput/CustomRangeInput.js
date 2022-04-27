@@ -91,10 +91,10 @@ function eventListenersForInput() {
     this.isMouseDown = false;
   };
 
-  // this.rangeWraper.addEventListener("click", rangeClick);
-  // this.rangeWraper.addEventListener("mousedown", rangeMouseDown);
-  // document.addEventListener("mousemove", rangeMouseMove);
-  // document.addEventListener("mouseup", rangeMouseUp);
+  this.rangeWraper.addEventListener("click", rangeClick);
+  this.rangeWraper.addEventListener("mousedown", rangeMouseDown);
+  document.addEventListener("mousemove", rangeMouseMove);
+  document.addEventListener("mouseup", rangeMouseUp);
 
   const rangeTouchStart = (e) => {
     this.isTouchDown = true;

@@ -2,7 +2,7 @@
   --range-dot-size: 12px;
   --range-track-height: 4px;
   --range-track-width: 300px;
-  --range-wraper-height: var(--range-dot-size);
+  --range-wraper-height: calc(var(--range-dot-size) * 1.5);
   --range-track-covered: 10%;
   --range-track-bg: hsl(0, 0%, 22%);
   --range-track-covered-bg: hsl(0, 0%, 78%);
